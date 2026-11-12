@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#102b46"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>EFELNET - Pengumuman Pelanggan</title>
+<style>
+:root{--navy:#102b46;--blue:#1769aa;--light:#eef5fb;--green:#16834a;--border:#d7e1ea;--text:#183047}
+*{box-sizing:border-box}body{margin:0;background:#f4f7fa;color:var(--text);font:15px/1.5 Arial,sans-serif}
+header{background:linear-gradient(120deg,#102b46,#1769aa);color:white;padding:24px 18px}
+header .wrap,main{max-width:980px;margin:auto}header h1{margin:0;font-size:25px}header p{margin:5px 0 0;color:#e3eff9}
+main{padding:20px 14px 40px}.card{background:white;border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #16324b0a}
+h2{font-size:19px;margin:0 0 12px}.muted{color:#607487;font-size:13px}
+.templates{display:grid;grid-template-columns:repeat(auto-fit,minmax(205px,1fr));gap:10px}
+.template{border:1px solid var(--border);border-radius:11px;padding:12px;background:#fff;text-align:left;cursor:pointer;color:var(--text)}
+.template:hover,.template.active{border:2px solid var(--blue);background:var(--light);padding:11px}
+.template strong{display:block;margin-bottom:3px}.template span{font-size:13px;color:#607487}
+label{display:block;font-weight:600;margin:12px 0 5px}input[type=text],textarea{width:100%;padding:11px;border:1px solid #bdcbd8;border-radius:8px;font:inherit}
+textarea{min-height:125px;resize:vertical}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:10px}
+.group{display:flex;align-items:center;gap:9px;border:1px solid var(--border);border-radius:9px;padding:10px;font-weight:normal;margin:0}
+.group input{width:18px;height:18px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+button{border:0;border-radius:9px;padding:11px 15px;font-weight:700;cursor:pointer}
+.primary{background:var(--green);color:white}.secondary{background:#e7eef5;color:#17334b}
+.status{background:#f1f7fc;border-left:4px solid var(--blue);padding:11px;border-radius:6px;margin-top:12px}
+.warning{background:#fff7e8;border-left:4px solid #d99a21;padding:12px;border-radius:6px;margin-top:12px;font-size:13px}
+.preview{white-space:pre-wrap;background:#f8fafc;border:1px dashed #b8c9d8;border-radius:9px;padding:12px;min-height:70px}
+footer{text-align:center;color:#718294;font-size:12px;padding:10px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><h1>EFELNET</h1><p>Akses Mudah &amp; Aman · Pusat Pengumuman Pelanggan</p></div></header>
+<main>
+<section class="card">
+<h2>1. Pilih jenis pesan</h2>
+<p class="muted">Tidak perlu mengetik dari awal. Pilih salah satu contoh pesan di bawah ini.</p>
+<div class="templates">
+<button class="template active" data-kind="gangguan"><strong>⚠️ Gangguan internet</strong><span>Internet sedang mengalami gangguan</span></button>
+<button class="template" data-kind="mati"><strong>🔴 Internet mati / putus</strong><span>Informasi internet terputus</span></button>
+<button class="template" data-kind="perbaikan"><strong>🛠️ Perbaikan jaringan</strong><span>Tim sedang melakukan perbaikan</span></button>
+<button class="template" data-kind="maintenance"><strong>📢 Pemeliharaan jaringan</strong><span>Pemberitahuan jadwal pemeliharaan</span></button>
+<button class="template" data-kind="normal"><strong>✅ Internet normal kembali</strong><span>Informasi layanan sudah normal</span></button>
+<button class="template" data-kind="tagihan"><strong>💳 Pengingat pembayaran</strong><span>Pengingat tagihan pelanggan</span></button>
+</div>
+<label for="area">Wilayah / lokasi (boleh dikosongkan)</label>
+<input id="area" type="text" placeholder="Contoh: Dusun Krajan / wilayah RT 02">
+<label for="extra">Keterangan tambahan (opsional)</label>
+<input id="extra" type="text" placeholder="Contoh: estimasi selesai pukul 21.00">
+</section>
+
+<section class="card">
+<h2>2. Pilih grup WhatsApp tujuan</h2>
+<p class="muted">Centang grup yang ingin menerima pesan. Nama grup di bawah ini masih contoh dan dapat diganti sesuai grup EFELNET yang sebenarnya.</p>
+<div class="actions" style="margin-top:0">
+<button class="secondary" id="all">Pilih semua</button><button class="secondary" id="none">Hapus pilihan</button>
+</div>
+<div class="groups" id="groups">
+<label class="group"><input type="checkbox" checked><span>Grup Pelanggan EFELNET 1</span></label>
+<label class="group"><input type="checkbox"><span>Grup Pelanggan EFELNET 2</span></label>
+<label class="group"><input type="checkbox"><span>Grup Pelanggan EFELNET 3</span></label>
+<label class="group"><input type="checkbox"><span>Grup Pelanggan EFELNET 4</span></label>
+</div>
+<label for="groupnames">Ubah daftar nama grup (satu nama per baris)</label>
+<textarea id="groupnames" style="min-height:88px">Grup Pelanggan EFELNET 1
+Grup Pelanggan EFELNET 2
+Grup Pelanggan EFELNET 3
+Grup Pelanggan EFELNET 4</textarea>
+<div class="actions"><button class="secondary" id="applygroups">Perbarui daftar grup</button></div>
+</section>
+
+<section class="card">
+<h2>3. Periksa pesan lalu bagikan</h2>
+<label for="message">Isi pesan (otomatis terisi dari pilihan di atas; masih boleh diedit)</label>
+<textarea id="message"></textarea>
+<div class="muted" style="margin:12px 0 6px">Pratinjau pesan:</div>
+<div class="preview" id="preview"></div>
+<div class="actions"><button class="primary" id="share">Bagikan pesan ke WhatsApp</button><button class="secondary" id="copy">Salin pesan</button></div>
+<div class="status" id="status">Pilih jenis pesan dan grup tujuan, lalu bagikan melalui WhatsApp.</div>
+<div class="warning"><strong>Catatan:</strong> Aplikasi ini menyiapkan pesan dan pilihan grup. WhatsApp tidak mengizinkan halaman web biasa mengirim otomatis ke beberapa grup lama. Setelah WhatsApp terbuka, pilih grup tujuan dan tekan <strong>Kirim</strong>. Ulangi untuk grup berikutnya. Nama grup di halaman ini hanya daftar pilihan, belum terhubung otomatis ke daftar grup di akun WhatsApp.</div>
+</section>
+<footer>EFELNET · Prototipe lokal untuk uji coba admin</footer>
+</main>
+<script>
+const templates={
+gangguan:"Yth. Pelanggan EFELNET,\\n\\nMohon maaf, saat ini layanan internet sedang mengalami gangguan. Tim kami sedang melakukan pengecekan agar layanan dapat segera normal kembali.\\n\\nTerima kasih atas pengertian dan kesabarannya.\\nEFELNET – Akses Mudah & Aman",
+mati:"Yth. Pelanggan EFELNET,\\n\\nKami informasikan bahwa koneksi internet di wilayah yang terdampak saat ini sedang terputus/tidak dapat digunakan. Tim teknis sedang melakukan penanganan.\\n\\nMohon maaf atas ketidaknyamanannya. Terima kasih.\\nEFELNET",
+perbaikan:"Yth. Pelanggan EFELNET,\\n\\nSaat ini tim teknis sedang melakukan perbaikan jaringan. Selama proses berlangsung, koneksi internet mungkin terganggu sementara.\\n\\nMohon maaf atas ketidaknyamanannya.\\nEFELNET",
+maintenance:"Yth. Pelanggan EFELNET,\\n\\nKami informasikan akan dilakukan pemeliharaan jaringan. Pada waktu tersebut, layanan internet mungkin mengalami gangguan sementara.\\n\\nTerima kasih atas pengertiannya.\\nEFELNET",
+normal:"Yth. Pelanggan EFELNET,\\n\\nKami informasikan bahwa gangguan jaringan telah selesai ditangani dan layanan internet saat ini sudah kembali normal.\\n\\nTerima kasih telah menunggu.\\nEFELNET – Akses Mudah & Aman",
+tagihan:"Yth. Pelanggan EFELNET,\\n\\nKami mengingatkan bahwa pembayaran layanan internet untuk periode ini telah memasuki waktu pembayaran. Mohon melakukan pembayaran sesuai tagihan agar layanan tetap aktif.\\n\\nJika sudah membayar, pesan ini dapat diabaikan. Terima kasih.\\nEFELNET"
+};
+let current="gangguan";
+const msg=document.getElementById("message"), preview=document.getElementById("preview"), status=document.getElementById("status");
+function build(){let s=templates[current];let area=document.getElementById("area").value.trim();let extra=document.getElementById("extra").value.trim();if(area)s=s.replace("Pelanggan EFELNET,","Pelanggan EFELNET wilayah "+area+",");if(extra)s+="\\n\\nKeterangan: "+extra;msg.value=s;preview.textContent=s}
+document.querySelectorAll(".template").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".template").forEach(x=>x.classList.remove("active"));b.classList.add("active");current=b.dataset.kind;build()}));
+["area","extra"].forEach(id=>document.getElementById(id).addEventListener("input",build));
+msg.addEventListener("input",()=>preview.textContent=msg.value);
+document.getElementById("all").onclick=()=>document.querySelectorAll("#groups input").forEach(x=>x.checked=true);
+document.getElementById("none").onclick=()=>document.querySelectorAll("#groups input").forEach(x=>x.checked=false);
+document.getElementById("applygroups").onclick=()=>{let names=document.getElementById("groupnames").value.split("\\n").map(x=>x.trim()).filter(Boolean);let box=document.getElementById("groups");box.innerHTML="";names.forEach((n,i)=>{let l=document.createElement("label");l.className="group";let c=document.createElement("input");c.type="checkbox";c.checked=i===0;let s=document.createElement("span");s.textContent=n;l.append(c,s);box.append(l)});status.textContent="Daftar nama grup diperbarui. Centang grup tujuan.";};
+document.getElementById("share").onclick=()=>{let selected=[...document.querySelectorAll("#groups input:checked")];if(!selected.length){status.textContent="Pilih minimal satu grup terlebih dahulu.";return}let text=msg.value.trim();if(!text){status.textContent="Isi pesan masih kosong.";return}status.textContent="WhatsApp akan dibuka. Pilih grup yang dituju, lalu tekan Kirim. Untuk grup berikutnya, kembali ke halaman ini dan ulangi.";window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");};
+document.getElementById("copy").onclick=async()=>{try{await navigator.clipboard.writeText(msg.value);status.textContent="Pesan berhasil disalin. Anda dapat menempelkannya di WhatsApp."}catch(e){msg.select();document.execCommand("copy");status.textContent="Pesan disalin. Anda dapat menempelkannya di WhatsApp."}};
+build();
+</script>
+<script>if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {})); }</script>
+</body></html>
