@@ -1,5 +1,5 @@
 
-const CACHE = "efelnet-admin-v2";
+const CACHE = "efelnet-admin-v3";
 
 const FILES = [
   "./",
