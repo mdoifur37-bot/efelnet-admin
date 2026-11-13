@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -46,14 +46,15 @@ footer{text-align:center;color:#718294;font-size:12px;padding:10px}
 <main>
 <section class="card">
 <h2>1. Pilih jenis pesan</h2>
-<p class="muted">Tidak perlu mengetik dari awal. Pilih salah satu contoh pesan di bawah ini.</p>
+<p class="muted">Tidak perlu mengetik dari awal. Pilih salah satu contoh pesan di bawah ini. Fitur tagihan dibedakan menjadi pengingat tanggal 15 dan peringatan keterlambatan mulai tanggal 21 pukul 00.00.</p>
 <div class="templates">
 <button class="template active" data-kind="gangguan"><strong>⚠️ Gangguan internet</strong><span>Internet sedang mengalami gangguan</span></button>
 <button class="template" data-kind="mati"><strong>🔴 Internet mati / putus</strong><span>Informasi internet terputus</span></button>
 <button class="template" data-kind="perbaikan"><strong>🛠️ Perbaikan jaringan</strong><span>Tim sedang melakukan perbaikan</span></button>
 <button class="template" data-kind="maintenance"><strong>📢 Pemeliharaan jaringan</strong><span>Pemberitahuan jadwal pemeliharaan</span></button>
 <button class="template" data-kind="normal"><strong>✅ Internet normal kembali</strong><span>Informasi layanan sudah normal</span></button>
-<button class="template" data-kind="tagihan"><strong>💳 Pengingat pembayaran</strong><span>Pengingat tagihan pelanggan</span></button>
+<button class="template" data-kind="pengingat"><strong>💳 Pengingat tagihan · Tanggal 15</strong><span>Tagihan Rp100.000, batas bayar tanggal 20 pukul 23.59</span></button>
+<button class="template" data-kind="terlambat"><strong>⚠️ Peringatan terlambat · Tanggal 21</strong><span>Untuk pelanggan yang belum membayar setelah jatuh tempo</span></button>
 </div>
 <label for="area">Wilayah / lokasi (boleh dikosongkan)</label>
 <input id="area" type="text" placeholder="Contoh: Dusun Krajan / wilayah RT 02">
@@ -108,7 +109,8 @@ mati:"Yth. Pelanggan EFELNET,\n\nKami informasikan bahwa koneksi internet di wil
 perbaikan:"Yth. Pelanggan EFELNET,\n\nSaat ini tim teknis sedang melakukan perbaikan jaringan. Selama proses berlangsung, koneksi internet mungkin terganggu sementara.\n\nMohon maaf atas ketidaknyamanannya.\nEFELNET",
 maintenance:"Yth. Pelanggan EFELNET,\n\nKami informasikan akan dilakukan pemeliharaan jaringan. Pada waktu tersebut, layanan internet mungkin mengalami gangguan sementara.\n\nTerima kasih atas pengertiannya.\nEFELNET",
 normal:"Yth. Pelanggan EFELNET,\n\nKami informasikan bahwa gangguan jaringan telah selesai ditangani dan layanan internet saat ini sudah kembali normal.\n\nTerima kasih telah menunggu.\nEFELNET – Akses Mudah & Aman",
-tagihan:"Yth. Pelanggan EFELNET,\n\nKami mengingatkan bahwa pembayaran layanan internet untuk periode ini telah memasuki waktu pembayaran. Mohon melakukan pembayaran sesuai tagihan agar layanan tetap aktif.\n\nJika sudah membayar, pesan ini dapat diabaikan. Terima kasih.\nEFELNET"
+pengingat:"📢 PENGINGAT PEMBAYARAN TAGIHAN EFELNET\\n\\nYth. Pelanggan EFELNET,\\n\\nKami mengingatkan bahwa pembayaran tagihan internet bulan ini sebesar Rp100.000. Mohon melakukan pembayaran paling lambat tanggal 20 pukul 23.59.\\n\\nJika sudah membayar, pesan ini dapat diabaikan. Terima kasih.\\n\\nEFELNETWORK INDONESIA – Akses Mudah & Aman",
+terlambat:"⚠️ PERINGATAN KETERLAMBATAN PEMBAYARAN EFELNET\\n\\nYth. Pelanggan EFELNET,\\n\\nBatas pembayaran tagihan internet sebesar Rp100.000 telah berakhir pada tanggal 20 pukul 23.59. Saat ini telah memasuki tanggal 21 pukul 00.00. Bagi pelanggan yang belum melakukan pembayaran, mohon segera menyelesaikan pembayaran.\\n\\nJika sudah melakukan pembayaran, pesan ini dapat diabaikan. Terima kasih.\\n\\nEFELNETWORK INDONESIA – Akses Mudah & Aman"
 };
 let current="gangguan";
 const msg=document.getElementById("message"), preview=document.getElementById("preview"), status=document.getElementById("status");
