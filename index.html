@@ -181,10 +181,30 @@ document.getElementById("copy").onclick=async()=>{
  try{await navigator.clipboard.writeText(msg.value);status.textContent="Pesan berhasil disalin. Anda dapat menempelkannya di WhatsApp.";}
  catch(e){msg.select();document.execCommand("copy");status.textContent="Pesan disalin. Anda dapat menempelkannya di WhatsApp.";}
 };
-document.getElementById("shareTutorial").onclick=()=>{
- const url=location.origin+location.pathname.replace(/index\\.html$/,"")+"tutorial-password-wifi.jpeg";
- const text="Tutorial mengganti password WiFi EFELNET (ONU ZTE F663NV9): "+url;
- window.open("https://wa.me/?text="+encodeURIComponent(text),"_blank");
+document.getElementById("shareTutorial").onclick=async()=>{
+ const button=document.getElementById("shareTutorial");
+ const posterUrl=new URL("tutorial-password-wifi.jpeg",document.baseURI);
+ const caption="Tutorial mengganti password WiFi EFELNET (ONU ZTE F663NV9).";
+ button.disabled=true;
+ try{
+  status.textContent="Menyiapkan file poster...";
+  const response=await fetch(posterUrl);
+  if(!response.ok) throw new Error("Poster tidak ditemukan. Pastikan file tutorial-password-wifi.jpeg ikut diunggah ke GitHub.");
+  const blob=await response.blob();
+  const file=new File([blob],"poster-tutorial-password-wifi.jpeg",{type:blob.type||"image/jpeg"});
+  if(navigator.canShare && navigator.canShare({files:[file]})){
+   await navigator.share({files:[file],title:"Tutorial Password WiFi EFELNET",text:caption});
+   status.textContent="Poster dibagikan melalui menu berbagi perangkat. Pilih WhatsApp, lalu pilih chat/grup dan tekan Kirim.";
+  }else{
+   const objectUrl=URL.createObjectURL(blob);
+   const a=document.createElement("a");a.href=objectUrl;a.download="poster-tutorial-password-wifi.jpeg";document.body.appendChild(a);a.click();a.remove();
+   setTimeout(()=>URL.revokeObjectURL(objectUrl),60000);
+   status.textContent="Browser ini belum mendukung berbagi file gambar langsung. Poster sudah diunduh; buka WhatsApp, pilih chat/grup, lalu lampirkan file poster yang diunduh (bukan tautan).";
+  }
+ }catch(error){
+  if(error.name==="AbortError") status.textContent="Berbagi dibatalkan. Poster tidak dikirim.";
+  else status.textContent="Gagal menyiapkan poster: "+error.message;
+ }finally{button.disabled=false;}
 };
 document.getElementById("openPoster").onclick=()=>window.open("tutorial-password-wifi.jpeg","_blank");
 build();
