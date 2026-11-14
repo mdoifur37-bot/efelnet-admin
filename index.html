@@ -53,7 +53,7 @@ footer{text-align:center;color:#718294;font-size:12px;padding:10px}
 <button class="template" data-kind="perbaikan"><strong>🛠️ Perbaikan jaringan</strong><span>Tim sedang melakukan perbaikan</span></button>
 <button class="template" data-kind="maintenance"><strong>📢 Pemeliharaan jaringan</strong><span>Pemberitahuan jadwal pemeliharaan</span></button>
 <button class="template" data-kind="normal"><strong>✅ Internet normal kembali</strong><span>Informasi layanan sudah normal</span></button>
-<button class="template" data-kind="pengingat"><strong>💳 Pengingat tagihan · Tanggal 15</strong><span>Tagihan Rp100.000, batas bayar tanggal 20 pukul 23.59</span></button>
+<button class="template" data-kind="pengingat"><strong>💳 Pengingat tagihan · Tanggal 15</strong><span>Pengingat pembayaran sebelum batas waktu tanggal 20 pukul 23.59</span></button>
 <button class="template" data-kind="terlambat"><strong>⚠️ Peringatan terlambat · Tanggal 21</strong><span>Untuk pelanggan yang belum membayar setelah jatuh tempo</span></button>
 </div>
 <label for="area">Wilayah / lokasi (boleh dikosongkan)</label>
@@ -109,8 +109,40 @@ mati:"Yth. Pelanggan EFELNET,\n\nKami informasikan bahwa koneksi internet di wil
 perbaikan:"Yth. Pelanggan EFELNET,\n\nSaat ini tim teknis sedang melakukan perbaikan jaringan. Selama proses berlangsung, koneksi internet mungkin terganggu sementara.\n\nMohon maaf atas ketidaknyamanannya.\nEFELNET",
 maintenance:"Yth. Pelanggan EFELNET,\n\nKami informasikan akan dilakukan pemeliharaan jaringan. Pada waktu tersebut, layanan internet mungkin mengalami gangguan sementara.\n\nTerima kasih atas pengertiannya.\nEFELNET",
 normal:"Yth. Pelanggan EFELNET,\n\nKami informasikan bahwa gangguan jaringan telah selesai ditangani dan layanan internet saat ini sudah kembali normal.\n\nTerima kasih telah menunggu.\nEFELNET – Akses Mudah & Aman",
-pengingat:"PENGINGAT PEMBAYARAN TAGIHAN EFELNET\n\nYth. Pelanggan EFELNET,\n\nKami mengingatkan bahwa pembayaran tagihan internet bulan ini sebesar Rp100.000. Mohon melakukan pembayaran paling lambat tanggal 20 pukul 23.59.\n\nJika sudah membayar, pesan ini dapat diabaikan. Terima kasih.\n\nEFELNETWORK INDONESIA – Akses Mudah & Aman",
-terlambat:"PERINGATAN KETERLAMBATAN PEMBAYARAN EFELNET\n\nYth. Pelanggan EFELNET,\n\nBatas pembayaran tagihan internet sebesar Rp100.000 telah berakhir pada tanggal 20 pukul 23.59. Saat ini telah memasuki tanggal 21 pukul 00.00. Bagi pelanggan yang belum melakukan pembayaran, mohon segera menyelesaikan pembayaran.\n\nJika sudah melakukan pembayaran, pesan ini dapat diabaikan. Terima kasih.\n\nEFELNETWORK INDONESIA – Akses Mudah & Aman"
+pengingat:`PENGINGAT PEMBAYARAN TAGIHAN EFELNET
+
+Yth. Pelanggan EFELNET,
+
+Kami mengingatkan bahwa pembayaran tagihan internet bulan ini belum tercatat. Mohon melakukan pembayaran paling lambat tanggal 20 pukul 23.59.
+
+Jika sudah membayar, pesan ini dapat diabaikan. Terima kasih.
+
+Pembayaran dapat dilakukan melalui transfer ke rekening berikut:
+- DANA: 085233701525 (Febtu Romadani)
+- BCA: 0240856204 (Febtu Romadani)
+- MANDIRI: 1430018569770 (Febtu Romadani)
+- BRI: 619701028558533 (Febtu Romadani)
+
+Tidak dapat dilakukan penjemputan pembayaran.
+
+EFELNETWORK INDONESIA – Akses Mudah & Aman`,
+terlambat:`PERINGATAN KETERLAMBATAN PEMBAYARAN EFELNET
+
+Yth. Pelanggan EFELNET,
+
+Batas pembayaran tagihan internet telah berakhir pada tanggal 20 pukul 23.59. Saat ini telah memasuki tanggal 21 pukul 00.00. Bagi pelanggan yang belum melakukan pembayaran, mohon segera menyelesaikan pembayaran.
+
+Jika sudah melakukan pembayaran, pesan ini dapat diabaikan. Terima kasih.
+
+Pembayaran dapat dilakukan melalui transfer ke rekening berikut:
+- DANA: 085233701525 (Febtu Romadani)
+- BCA: 0240856204 (Febtu Romadani)
+- MANDIRI: 1430018569770 (Febtu Romadani)
+- BRI: 619701028558533 (Febtu Romadani)
+
+Tidak dapat dilakukan penjemputan pembayaran.
+
+EFELNETWORK INDONESIA – Akses Mudah & Aman`
 };
 let current="gangguan";
 const msg=document.getElementById("message"), preview=document.getElementById("preview"), status=document.getElementById("status");
